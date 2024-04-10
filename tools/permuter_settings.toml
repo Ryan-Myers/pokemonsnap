@@ -1,3 +1,5 @@
+compiler_command = "python3 tools/asm_processor/build.py tools/ido7.1/cc -- mips-linux-gnu-as -G 0 -I include -I ultralib/include -I ultralib/include/ido -I ultralib/include/PR -I ultralib/src -EB -mtune=vr4300 -march=vr4300 -- -G 0 -O2 -non_shared -fullwarn -verbose -Xcpluscomm -nostdinc -Wab,-r4300_mul $flags -mips2 -I include -I ultralib/include -I ultralib/include/ido -I ultralib/include/PR -I ultralib/src -DF3DEX_GBI_2 -D_LANGUAGE_C -DNDEBUG -D_FINALROM -DBUILD_VERSION=VERSION_I -c"
+assembler_command = "mips-linux-gnu-as -G0 -I include -I ultralib/include -I ultralib/include/ido -I ultralib/include/PR -I ultralib/src -EB -mtune=vr4300 -march=vr4300"
 compiler_type = "ido"
 
 [preserve_macros]
@@ -14,9 +16,5 @@ CLAMP = "int"
 NULL = "int"
 
 [decompme.compilers]
-"tools/ido_recomp/linux/7.1/cc" = "ido7.1"
-"tools/ido_recomp/macos/7.1/cc" = "ido7.1"
-"tools/ido_recomp/windows/7.1/cc" = "ido7.1"
-"tools/ido_recomp/linux/5.3/cc" = "ido5.3"
-"tools/ido_recomp/macos/5.3/cc" = "ido5.3"
-"tools/ido_recomp/windows/5.3/cc" = "ido5.3"
+"tools/ido7.1/cc" = "ido7.1"
+"tools/ido5.3/cc" = "ido5.3"

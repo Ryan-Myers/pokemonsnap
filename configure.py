@@ -39,7 +39,7 @@ IDO_53_CC = TOOLS_DIR / "ido5.3" / "cc"
 
 O32_TOOL = ROOT / "ultralib/tools/set_o32abi_bit.py"
 
-GAME_CC_CMD = f"python3 tools/asm_processor/build.py {IDO_72_CC} -- {CROSS_AS} {AS_FLAGS} -- -G 0 -non_shared -fullwarn -verbose -Xcpluscomm -nostdinc -Wab,-r4300_mul $flags -mips2 {COMMON_INCLUDES} {IDO_DEFS} -c -o $out $in"
+GAME_CC_CMD = f"python3 tools/asm_processor/build.py {IDO_72_CC} -- {CROSS_AS} {AS_FLAGS} -- -G 0 -O2 -non_shared -fullwarn -verbose -Xcpluscomm -nostdinc -Wab,-r4300_mul $flags -mips2 {COMMON_INCLUDES} {IDO_DEFS} -c -o $out $in"
 
 LIBULTRA_CC_CMD = f"$ido -G 0 -non_shared -fullwarn -verbose -Wab,-r4300_mul -woff 513,516,649,838,712 -Xcpluscomm -nostdinc $flags {COMMON_INCLUDES} {IDO_DEFS} -c -o $out $in && {O32_TOOL} $out"
 
@@ -98,16 +98,28 @@ def setup():
 
 
 def write_permuter_settings():
-    with open("permuter_settings.toml", "w") as f:
+    with open(TOOLS_DIR / "permuter_settings.toml", "w") as f:
         f.write(
             f"""compiler_command = "{GAME_CC_CMD}"
 assembler_command = "{CROSS}as -G0 {COMMON_INCLUDES} -EB -mtune=vr4300 -march=vr4300"
 compiler_type = "ido"
 
 [preserve_macros]
+"g[DS]P.*" = "void"
+"gs[DS]P.*" = "void"
+"G_IM_SIZ_.*" = "int"
+"G_[AC]C.*" = "int"
+ABS = "int"
+ABS_ALT = "int"
+SQ = "int"
+ARRAY_COUNT = "int"
+ARRAY_COUNTU = "int"
+CLAMP = "int"
+NULL = "int"
 
 [decompme.compilers]
-"tools/build/cc/gcc/gcc" = "ido7.1"
+"{IDO_72_CC}" = "ido7.1"
+"{IDO_53_CC}" = "ido5.3"
 """
         )
 
@@ -337,4 +349,4 @@ if __name__ == "__main__":
 
     create_build_script(linker_entries)
 
-    # write_permuter_settings()
+    write_permuter_settings()
