@@ -121,13 +121,39 @@ f32 func_80019DB0(void) {
     return ((D_80040F40 >> 16) & 0xFFFF) / 65536.0f;
 }
 
+#if 0
+s32 func_80019E14(s32 arg0) {
+    s32 temp_lo;
+    s32 var_at;
+
+    temp_lo = func_80019D60() * arg0;
+    if (temp_lo < 0) {
+        var_at = temp_lo + 0xFFFF;
+    } else {
+        var_at = temp_lo;
+    }
+    return var_at >> 16;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/1A560/func_80019E14.s")
+#endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/1A560/func_80019E54.s")
+s32 func_80019E54(void) {
+    return (osGetTime() & 0xFF);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/1A560/func_80019E78.s")
+f32 func_80019E78(void) {
+    return (osGetTime() & 0xFF) * (1.0f / 256.0f);
+}
 
+#if 0
+s32 func_80019EB0(s32 arg0) {
+    s32 time = (u32) osGetTime() & 0xFF;
+    return (time * arg0 * (1.0f / 256.0f));
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/1A560/func_80019EB0.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1A560/func_80019F00.s")
 
