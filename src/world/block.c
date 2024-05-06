@@ -243,7 +243,7 @@ f32 world_func_800E21A8(f32 arg0) {
 }
 
 static void nullsub() {
-    
+
 }
 
 void func_800E21E4_5F994(WorldBlock* arg0, WorldBlock* arg1) {
@@ -307,7 +307,7 @@ void func_800E2354_5FB04(WorldBlock* arg0) {
         if (WorldBlockDeleteCb != NULL) {
             WorldBlockDeleteCb(arg0);
         }
-    }    
+    }
 }
 
 void func_800E23A8_5FB58(WorldBlock* arg0) {
@@ -324,7 +324,7 @@ void func_800E23A8_5FB58(WorldBlock* arg0) {
         if (D_800E6AFC_642AC != NULL) {
             D_800E6AFC_642AC(next, arg0);
         }
-    }    
+    }
 }
 
 WorldBlock* func_800E2400_5FBB0(void) {

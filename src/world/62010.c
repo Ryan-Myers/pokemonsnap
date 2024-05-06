@@ -811,7 +811,7 @@ void world_func_800E6778(UnkChestnutCougar* arg0) {
             func_800E4E98_62648(s0, &sp44);
             s0++;
         }
-    }    
+    }
 }
 
 s32 world_func_800E67E4(Vec3f* arg0, Vec3f* arg1, Vec3f* arg2, Vec3f* arg3, UnkChestnutCougar* arg4, Vec3f arg5, Vec3f arg8) {
